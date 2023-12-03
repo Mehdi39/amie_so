@@ -1,30 +1,38 @@
 import { useState } from 'react'
 import Hero from './components/Hero'
+import Title from './components/features/Title'
+import { Availability, Colors, Music, SchedulingLinks, Team, Todo} from './components/features/Card'
 
 const features = [
   {
     title: "use your calender as a todo list",
-    id: "todo-list"
+    id: "todo-list",
+    card: Todo
   },
   {
     title: "Color your calender to organize",
-    id: "colors"
+    id: "colors",
+    card: Colors
   },
   {
     title: "Instantly know if someone is available",
-    id: "availability"
+    id: "availability",
+    card: Availability
   },
   {
     title: "Track what you listened to when",
-    id: "music"
+    id: "music",
+    card: Music
   },
   {
     title: "Send scheduling links guests love",
-    id: "scheduling-links"
+    id: "scheduling-links",
+    card: SchedulingLinks
   },
   {
     title: "Always know what your team is up to",
-    id: "team"
+    id: "team",
+    card: Team
   }
 ]
 
@@ -49,15 +57,19 @@ function App() {
             {
               features.map((feature) => (
                 <li key={feature.id}>
-                  <p className='py-16 font-heading text-5xl text-gray-300'>{feature.title}</p>
+                  <Title id={feature?.id}>{feature.title}</Title>
                 </li>
               ))
             }
           </ul>
         </div>
-        <div className='w-full sticky top-0 h-screen flex items-center'>
-          <div className='w-full aspect-square bg-gray-100'>
-            div col
+        <div className='sticky top-0 flex h-screen w-full items-center'>
+          <div className='relative aspect-square w-full rounded-2xl bg-gray-100'>
+            {
+              features.map(feature => (
+                <feature.card id={feature?.id} key={feature.id}/>
+              ))
+            }
           </div>
         </div>
       </div>
